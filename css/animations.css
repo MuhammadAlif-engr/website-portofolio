@@ -1,0 +1,75 @@
+/* ============================================================
+   animations.css — Animation System (Aurora Edition)
+   ============================================================ */
+
+/* ─── Reduced Motion override ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal,.hero__eyebrow,.hero__greeting,.hero__name,.hero__title,
+  .hero__desc,.hero__actions,.hero__social,.hero__photo-wrap {
+    opacity:1!important; transform:none!important;
+  }
+}
+
+/* ─── Hero Entrance ─────────────────────────────────────────── */
+.hero-animated .hero__eyebrow    { animation: hero-up 0.6s ease forwards 100ms; }
+.hero-animated .hero__greeting   { animation: hero-up 0.65s ease forwards 250ms; }
+.hero-animated .hero__name       { animation: hero-up 0.7s ease forwards 380ms; }
+.hero-animated .hero__title      { animation: hero-up 0.7s ease forwards 500ms; }
+.hero-animated .hero__desc       { animation: hero-up 0.65s ease forwards 630ms; }
+.hero-animated .hero__actions    { animation: hero-up 0.65s ease forwards 760ms; }
+.hero-animated .hero__social     { animation: hero-up 0.6s ease forwards 880ms; }
+.hero-animated .hero__photo-wrap { animation: hero-photo 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards 500ms; }
+
+@keyframes hero-up {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes hero-photo {
+  from { opacity:0; transform:scale(0.85); }
+  to   { opacity:1; transform:scale(1); }
+}
+
+/* animasi ring foto telah ditangani seutuhnya oleh sistem engine utama style.css */
+
+/* ─── Navbar ────────────────────────────────────────────────── */
+.navbar__inner { will-change: height, background; }
+
+/* ─── Theme toggle icon flip ────────────────────────────────── */
+.theme-toggle { transition: all var(--transition-base), transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.theme-toggle:active { transform: rotate(20deg) scale(0.9); }
+
+/* ─── Cards ─────────────────────────────────────────────────── */
+.project-card { will-change: transform; }
+.project-card:hover { transform: translateY(-6px); }
+.project-card:active { transform: translateY(-2px); }
+
+/* ─── Project filter transition ─────────────────────────────── */
+.filter-btn { transition: all var(--transition-base); }
+.filter-btn:hover { transform: translateY(-1px); }
+.filter-btn.active { transform: none; }
+
+/* ─── Modal ─────────────────────────────────────────────────── */
+.modal { will-change: transform; }
+body.modal-open { overflow: hidden; }
+
+/* ─── Mobile menu links stagger ─────────────────────────────── */
+.navbar__mobile-link { transition: color 0.2s ease, opacity 0.3s ease, transform 0.3s ease; }
+
+/* ─── Contact link ───────────────────────────────────────────── */
+.contact__link { transition: all var(--transition-base); }
+
+/* ─── Scroll reveal stagger ─────────────────────────────────── */
+.reveal-stagger > * { opacity:0; transform:translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal-stagger > *.visible { opacity:1; transform:translateY(0); }
+.reveal-stagger > *:nth-child(1){ transition-delay:0ms; }
+.reveal-stagger > *:nth-child(2){ transition-delay:80ms; }
+.reveal-stagger > *:nth-child(3){ transition-delay:160ms; }
+.reveal-stagger > *:nth-child(4){ transition-delay:240ms; }
+.reveal-stagger > *:nth-child(5){ transition-delay:320ms; }
+.reveal-stagger > *:nth-child(6){ transition-delay:400ms; }
+
